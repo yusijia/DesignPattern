@@ -1,0 +1,66 @@
+package com.designPattern.templateMethod;
+
+/**
+ * 含咖啡因的饮料抽象类
+ * 
+ * 模板方法模式： 定义了一个算法的框架，允许继承的子类为其提供一个或多个步骤的实现
+ *   模板方法和策略方法都封装算法，模板使用继承，策略使用组合
+ *   
+ * 钩子（Hook）：
+ *   被声明在抽象类中的方法，但是有默认的或者空的实现，给子类决定要不要重写
+ *   让子类决定算法中的某些部分是否需要
+ * 
+ * 示例： 咖啡和茶的冲泡过程 
+ * 咖啡：把水煮开、用沸水冲泡咖啡、把咖啡倒进杯子、加糖和牛奶 
+ * 茶叶：把水煮开、用沸水浸泡茶叶、把茶倒进杯子、加柠檬
+ *   
+ * @author ysj
+ *
+ */
+public abstract class CaffeineBeverageWithHook {
+
+	/**
+	 * 定义基本算法
+	 * 茶和咖啡的冲泡算法 模板方法声明为final 不允许子类重写
+	 */
+	public void prepareRecipe() {
+		boilWater();
+		brew();
+		pourInCup();
+		// 加上钩子 控制步骤
+		if (customerWantsCondiments()) {
+			addCondiments();
+		}
+	}
+	
+	/*
+	 * 这个方法必须由子类决定实现细节
+	 */
+	public abstract void brew();
+	
+	/*
+	 * 这个方法必须由子类决定实现细节
+	 */
+	public abstract void addCondiments();
+ 
+	/**
+	 * 默认实现方法
+	 */
+	public void boilWater() {
+		System.out.println("Boiling water");
+	}
+ 
+	public void pourInCup() {
+		System.out.println("Pouring into cup");
+	}
+ 
+	/**
+	 * 钩子方法： 
+	 *   子类可选的实现方法
+	 * @return
+	 */
+	public boolean customerWantsCondiments() {
+		return true;
+	}
+	
+}
