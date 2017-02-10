@@ -23,6 +23,7 @@ public class OwnerInvocationHandler implements InvocationHandler{
 	}
 	
 	// 控制访问
+	// 下面是一种叫保护代理的用法，对访问做了一些限制
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args) throws IllegalAccessException {
 		try {

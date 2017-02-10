@@ -5,6 +5,10 @@ import java.lang.reflect.Proxy;
 /**
  * 使用简单工厂
  * 	  利用JDK内置的代理创建personBean的相应的代理对象
+ * 
+ * 动态代理：
+ * 	  代码开始执行时，还没有proxy类，他是根据需要从传入的接口集，handler，类加载器创建的
+ * 
  * @author ysj
  *
  */
