@@ -3,6 +3,7 @@
 
 ﻿> 参考： 
 	《head first设计模式》的官方代码
+	
 	http://download.csdn.net/detail/undergrowth/8306683
 	
 
