@@ -1,11 +1,9 @@
 # DesignPattern
 设计模式总结-java版
 
-﻿> 参考： 
-	《head first设计模式》的官方代码
-	
-	http://download.csdn.net/detail/undergrowth/8306683
-	
+> 参考： 
+- 《head first设计模式》的官方代码
+- 某位博主的总结http://download.csdn.net/detail/undergrowth/8306683
 
 
 ## OO设计原则：
