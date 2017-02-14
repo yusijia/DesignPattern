@@ -17,7 +17,7 @@ public class Waitress {
 	}
 	
 	/**
-	 * 打印所有素食的菜单
+	 * 打印菜单中的素菜菜单项
 	 */
 	public void printVegetarianMenu() {
 		Iterator iterator = allMenus.createIterator();
@@ -27,10 +27,11 @@ public class Waitress {
 			MenuComponent menuComponent = 
 					(MenuComponent)iterator.next();
 			try {
+				// 表示是菜单项，并且是素菜
 				if (menuComponent.isVegetarian()) {
 					menuComponent.print();
 				}
-			} catch (UnsupportedOperationException e) {}
+			} catch (UnsupportedOperationException e) {}// 有的方法没加@Deprecated，默认是抛异常
 		}
 	}
 }

@@ -50,6 +50,16 @@ public class DinerMenu<E> implements Menu<E>{
 		return menuItems;
 	}
 	
+	// 另外实现的一个返回值不为空的remove方法
+	public MenuItem remove(int position){
+		MenuItem item = menuItems[position];
+		for (int i = position; i < (menuItems.length-1); i++) {
+			menuItems[i] = menuItems[i+1];
+		}
+		menuItems[menuItems.length-1] = null;
+		return item;
+	}
+
 	/**
 	 * 自带一个默认的iterator
 	 */

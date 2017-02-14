@@ -2,11 +2,13 @@ package com.designPattern.abstractFactory;
 
 public class ChicagoPizzaStore extends PizzaStore {
 	
+	private PizzaIngredientFactory ingredientFactory;
+
 	@Override
 	protected Pizza createPizza(String type) {
 		Pizza pizza = null;
 		// 使用组合构建对象家族
-		PizzaIngredientFactory ingredientFactory =
+		ingredientFactory =
 		new ChicagoPizzaIngredientFactory();
 
 		if (type.equals("cheese")) {

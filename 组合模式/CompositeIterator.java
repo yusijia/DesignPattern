@@ -11,7 +11,7 @@ import java.util.Stack;
  *
  */
 public class CompositeIterator implements Iterator{
-	
+	// 使用堆栈 迭代树形结构
 	private Stack stack = new Stack();
 	   
 	public CompositeIterator(Iterator iterator) {
@@ -23,6 +23,7 @@ public class CompositeIterator implements Iterator{
 		if (hasNext()) {
 			Iterator iterator = (Iterator) stack.peek();
 			MenuComponent component = (MenuComponent) iterator.next();
+			// 如果是菜单的话 ,入栈 ,遍历 菜单中的菜单项
 			if (component instanceof Menu) {
 				stack.push(component.createIterator());
 			} 

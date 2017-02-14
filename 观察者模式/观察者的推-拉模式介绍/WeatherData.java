@@ -61,7 +61,7 @@ public class WeatherData implements Subject{
 		// 如果发布者的数据改变了
 		if(isChanged()){
 			for(Observer observer : observers){
-				observer.update(temperature, humidity, pressure);
+				observer.update(temperature, humidity, pressure);// 强行把观察者拉过来并执行updata方法
 			}
 		}
 		setChanged(false);
@@ -75,7 +75,7 @@ public class WeatherData implements Subject{
 		// 如果发布者的数据改变了
 		if(isChanged()){
 			for(Observer observer : observers){
-				observer.update(this, map);
+				observer.update(this, map);// 将自己的数据打包并将自己推送出去。观察者维护一个发布者的列表。
 			}
 		}
 		setChanged(false);

@@ -1,0 +1,48 @@
+
+## 分析：
+　　给自定义类排序可以借助Arrays的静态方法sort，下面参考几个方法
+
+	// 对基本类型可直接排序(这里是借助DualPivotQuicksort的sort帮忙排序)
+	public static void sort(int[] a) {
+        DualPivotQuicksort.sort(a);
+    }
+	
+
+     public static void sort(Object[] a) {
+        if (LegacyMergeSort.userRequested)
+            legacyMergeSort(a);
+        else
+            ComparableTimSort.sort(a);
+    }
+
+    private static void legacyMergeSort(Object[] a) {
+        Object[] aux = a.clone();
+        mergeSort(aux, a, 0, a.length, 0);
+    }
+
+    // 对这种自定义类排序需要自定义类实现Comparable接口
+    private static void mergeSort(Object[] src,
+                                  Object[] dest,
+                                  int low,
+                                  int high,
+                                  int off) {
+        ......
+
+        // Merge sorted halves (now in src) into dest
+        for(int i = destLow, p = low, q = mid; i < destHigh; i++) {
+            if (q >= high || p < mid && ((Comparable)src[p]).compareTo(src[q])<=0)// 先主要看这个地方
+                dest[i] = src[p++];
+            else
+                dest[i] = src[q++];
+        }
+
+    }
+
+    /**
+     * Swaps x[a] with x[b].
+     */
+    private static void swap(Object[] x, int a, int b) {
+        Object t = x[a];
+        x[a] = x[b];
+        x[b] = t;
+    }
