@@ -6,8 +6,9 @@ package com.designPattern.singleton;
  *   
  *   经典的单例模式
  * 1、将构造器私有化
- * 2、提供一个私有的类的对象的静态成员变量
- * 3、提供一个静态的公有的获取对象的方法
+ * 2、提供一个私有的类的对象的静态成员变量(private static)
+ * 3、提供一个静态的公有的获取对象的方法(getInstance())
+ * 4、提供公有的、静态的、final的 类的单例属性(public static final), 在类加载时就实例化
  * 
  * 经典单例模式中 存在一个问题 当在多线程的环境中 可能会有多个ClassicSingleton的对象
  * 当然 可以在getInstance上加上synchronized 同步锁 但是每一次getInstance()的时候
@@ -20,7 +21,7 @@ package com.designPattern.singleton;
  * 最后注意一下：不同的类加载器加载同一个类，会产生多个单件并存的现象，所以，如果有多个类加载器，应该自行指定
  * 类加载器，并指定同一个类加载器
  * @author ysj
- *
+ * 下面是延迟实例化并线程安全版本的单例模式实现
  */
 public class Singleton {
 
